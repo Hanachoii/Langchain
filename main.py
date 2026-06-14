@@ -31,10 +31,10 @@ def main():
     print(analysis_result)
 
     # 4. LangChain으로 리뷰 생성
-    #review = generate_review(code, analysis_result)
+    review = generate_review(code, analysis_result)
 
     # 5. 결과 출력
-    #print(review)
+    print(review)
 
 
 if __name__ == "__main__":
