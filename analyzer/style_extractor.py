@@ -11,7 +11,7 @@ def extract_style_features(code: str) -> dict:
         stripped = line.strip()
         if stripped.startswith('#'):
             comment_lines += 1
-    comment_ratio = comment_lines / total_lines
+    comment_ratio = comment_lines / total_lines if total_lines else 0
 
     tree = ast.parse(code)
 
@@ -40,7 +40,7 @@ def extract_style_features(code: str) -> dict:
     pattern = r"^[a-z_][a-z0-9_]*$"
     all_names = variable_names + function_names
     snake_case_lines = sum(1 for name in all_names if re.match(pattern, name))
-    snake_case_ratio = snake_case_lines / len(all_names)
+    snake_case_ratio = snake_case_lines / len(all_names) if all_names else 0
 
     return {
         'total_lines': total_lines,
